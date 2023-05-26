@@ -1,10 +1,9 @@
 {
   "name": "grunt-crx",
-  "description": "Package your Chrome Extensions in a bliss.",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "homepage": "https://github.com/oncletom/grunt-crx",
-  "license": "MIT",
-  "author": "Thomas Parisot (https://oncletom.io)",
+  "description": "Package your Chrome Extensions in a bliss.",
+  "author": "Thomas Parisot (https://oncletom.io), updated by volnet (https://github.com/volnet/)",
   "repository": {
     "type": "git",
     "url": "git://github.com/oncletom/grunt-crx.git"
@@ -20,8 +19,9 @@
   ],
   "main": "Gruntfile.js",
   "bin": "bin/grunt-crx",
-  "engines": {
-    "node": ">= 12.0.0"
+  "directories": {
+    "lib": "lib",
+    "test": "test"
   },
   "scripts": {
     "test": "nyc mocha -R dot test/*.js",
@@ -35,20 +35,6 @@
       "html"
     ]
   },
-  "dependencies": {
-    "crx": "^5.0.0",
-    "xtend": "^4.0.1"
-  },
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "eslint": "^5.16.0",
-    "grunt": "^1.0.4",
-    "jszip": "^3.2.1",
-    "mocha": "^6.1.4",
-    "nyc": "^14.1.1",
-    "rimraf": "^2.6.3",
-    "sinon": "^7.3.2"
-  },
   "keywords": [
     "gruntplugin",
     "crx",
@@ -61,5 +47,22 @@
     "app",
     "hosted app",
     "packaged app"
-  ]
+  ],
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "eslint": "^8.41.0",
+    "grunt": "^1.6.1",
+    "grunt-contrib-jshint": "^3.2.0",
+    "grunt-contrib-nodeunit": "^5.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "jszip": "^3.10.1",
+    "mocha": "^10.2.0",
+    "nyc": "^15.1.0",
+    "rimraf": "^5.0.1",
+    "sinon": "^15.1.0"
+  },
+  "dependencies": {
+    "crx": "^5.0.1",
+    "xtend": "^4.0.2"
+  }
 }

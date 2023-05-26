@@ -11,7 +11,7 @@ Chrome extensions can either be:
 
 **Migrating from `grunt-crx<1.0.4`**? Please head to the [Upgrading section](#upgrading).
 
-# Getting Started
+## Getting Started
 
 Install this grunt plugin next to your project's [Gruntfile.js](http://gruntjs.com/sample-gruntfile) with the following command:
 
@@ -25,20 +25,21 @@ Then add this line to your project's `Gruntfile.js`:
 grunt.loadNpmTasks('grunt-crx');
 ```
 
-# Documentation
+## Documentation
 
 This task is a [multi task](http://gruntjs.com/creating-tasks#multi-tasks), meaning that grunt will automatically iterate over all `crx` targets if a target is not specified.
 
-## Target Options
+### Target Options
 
-* `src` (_mandatory_): ;
-* `dest` (string, _mandatory_): the filepath of your `.crx` or `.zip` archive;
-* `options` (object) – options that are directly provided to the `ChromeExtension` object;
- * `baseURL` (string): folder URL where package files will be self hosted ([see Autoupdating in Chrome Extension docs](https://developer.chrome.com/extensions/autoupdate));
- * `maxBuffer` (Number): amount of bytes available to package the extension ([see child_process#exec](https://nodejs.org/docs/latest/api/child_process.html#child_process_child_process_exec_command_options_callback));
- * `privateKey` (string): location of the `.pem` file used to sign your `crx` extension.
+- `src` (*mandatory*): ;
+- `dest` (string, *mandatory*): the filepath of your `.crx` or `.zip` archive;
+- `options` (object) – options that are directly provided to the `ChromeExtension` object;
+- `baseURL` (string): folder URL where package files will be self hosted ([see Autoupdating in Chrome Extension docs](https://developer.chrome.com/extensions/autoupdate));
+- `maxBuffer` (Number): amount of bytes available to package the extension ([see child_process#exec](https://nodejs.org/docs/latest/api/child_process.html#child_process_child_process_exec_command_options_callback));
+- `privateKey` (string): location of the `.pem` file used to sign your `crx` extension.
+- `timeoutMillonseconds` (Number): default value 10000ms (10seconds), it repair the problem [see `registerMultiTask` + `this.async` + `forget done()`](https://gruntjs.com/frequently-asked-questions#why-doesn-t-my-asynchronous-task-complete) , and [see code replication](https://github.com/volnet/grunt-testx).
 
-# Configuration Examples
+## Configuration Examples
 
 ```js
 grunt.initConfig({
@@ -59,7 +60,7 @@ grunt.initConfig({
 });
 ```
 
-## Advanced
+### Advanced
 
 This example demonstrates how you can tweak your builds upon your own
 source architecture.
@@ -82,7 +83,7 @@ grunt.initConfig({
 });
 ```
 
-## Build Channels
+### Build Channels
 
 This example demonstrates how to build separate channels of packages
 within a same repository location.
@@ -98,7 +99,8 @@ grunt.initConfig({
   crx: {
     options: {
       privateKey: "dist/key.pem",
-      maxBuffer: 3000 * 1024 //build extension with a weight up to 3MB
+      maxBuffer: 3000 * 1024, //build extension with a weight up to 3MB
+      timeoutMillonseconds: 300000 //It should be the longest time possible, but not too short (must be longer than the task execution time)."
     },
     staging: {
       "src": [
@@ -134,15 +136,14 @@ grunt.initConfig({
 });
 ```
 
-# Security Notice
+## Security Notice
 
 It is strongly recommended to store your privates keys (`.pem` files) **outside**
 the source folder of your extensions.
 
 Although `grunt-crx` will exclude by default because [we do not want this story](https://it.slashdot.org/story/12/05/24/1717219/yahoo-includes-private-key-in-source-file-for-axis-chrome-extension) to happen to you.
 
-
-# Upgrading
+## Upgrading
 
 ## v1.0
 
@@ -155,22 +156,20 @@ A few things have changed since `v0.3`:
 
 I present my **apologies** for the troubles you could have encountered if you have been using `grunt-crx@^1.0.0` until now.
 
-# Contributing
+## Contributing
 
 In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 If you don't add unit tests, someone will take care of that before shipping the module to NPM.
 Take any contribution as an opportunity to learn.
 
+## Credits
 
-# Credits
+- [Jed Schmidt](http://jed.is/) for the useful [crx](https://npmjs.com/crx) module
+- [Grunt authors](http://gruntjs.com) for this great toolbox
+- [**you**, contributor](CONTRIBUTORS.md), user or anyone providing a feedback
 
-* [Jed Schmidt](http://jed.is/) for the useful [crx](https://npmjs.com/crx) module
-* [Grunt authors](http://gruntjs.com) for this great toolbox
-* [**you**, contributor](CONTRIBUTORS.md), user or anyone providing a feedback
-
-
-# License
+## License
 
 > The MIT License (MIT)
 > Copyright © 2016 Thomas Parisot, and contributors

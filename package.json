@@ -1,20 +1,20 @@
 {
-  "name": "grunt-crx",
+  "name": "grunt-crx-updated",
   "version": "2.1.0",
-  "homepage": "https://github.com/oncletom/grunt-crx",
+  "homepage": "https://github.com/volnet/grunt-crx",
   "description": "Package your Chrome Extensions in a bliss.",
   "author": "Thomas Parisot (https://oncletom.io), updated by volnet (https://github.com/volnet/)",
   "repository": {
     "type": "git",
-    "url": "git://github.com/oncletom/grunt-crx.git"
+    "url": "git://github.com/volnet/grunt-crx.git"
   },
   "bugs": {
-    "url": "https://github.com/oncletom/grunt-crx/issues"
+    "url": "https://github.com/volnet/grunt-crx/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/oncletom/grunt-crx/blob/master/LICENSE"
+      "url": "https://github.com/volnet/grunt-crx/blob/master/LICENSE"
     }
   ],
   "main": "Gruntfile.js",

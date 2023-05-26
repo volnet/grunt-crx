@@ -16,13 +16,13 @@ Chrome extensions can either be:
 Install this grunt plugin next to your project's [Gruntfile.js](http://gruntjs.com/sample-gruntfile) with the following command:
 
 ```bash
-npm install --save-dev grunt-crx
+npm install --save-dev grunt-crx-new
 ```
 
 Then add this line to your project's `Gruntfile.js`:
 
 ```javascript
-grunt.loadNpmTasks('grunt-crx');
+grunt.loadNpmTasks('grunt-crx-new');
 ```
 
 ## Documentation

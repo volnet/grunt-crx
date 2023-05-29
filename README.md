@@ -1,4 +1,6 @@
-# grunt-crx [![Build Status](https://secure.travis-ci.org/oncletom/grunt-crx.svg?branch=master)](http://travis-ci.org/oncletom/grunt-crx)
+# grunt-crx[-new](https://github.com/volnet/grunt-crx)
+
+[raw version](http://travis-ci.org/oncletom/grunt-crx)
 
 `grunt-crx` is a Grunt task used to **package Chrome Extensions** (and soon, [WebExtensions](https://developer.mozilla.org/en-US/Add-ons/WebExtensions)).
 

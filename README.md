@@ -1,6 +1,6 @@
 # grunt-crx[-new](https://github.com/volnet/grunt-crx)
 
-[raw version](http://travis-ci.org/oncletom/grunt-crx)
+[seealso: old version github](https://github.com/thom4parisot/grunt-crx)
 
 `grunt-crx` is a Grunt task used to **package Chrome Extensions** (and soon, [WebExtensions](https://developer.mozilla.org/en-US/Add-ons/WebExtensions)).
 

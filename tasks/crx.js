@@ -16,23 +16,23 @@ module.exports = function (grunt) {
     "crx",
     "Package Chrome Extensions, the simple way.",
     function () {
-      const startDateTime = new Date();
-      var done = this.async();
-      var self = this;
-
-      let timeoutMillonseconds;
-      const options = self.options();
-      if (options) {
-        timeoutMillonseconds = options.timeoutMillonseconds || 10000;
-      }
-      grunt.log.writeln("Task will end in : " + timeoutMillonseconds + " millseconds.");
-      let timeout = setTimeout(() => {
-        done();
-      }, timeoutMillonseconds);
-
+      const self = this;
       this.requiresConfig("crx");
 
+      const done = self.async();
+
+      let counter = 0;
+      const fileLength = this.files.length;
+      const interval = setInterval(function () {
+        if (counter === fileLength) {
+          clearInterval(interval);
+          done();
+          grunt.log.writeln("Task Done.");
+        }
+      }, 100);
+
       this.files.forEach(function (taskConfig) {
+        const startDateTime = new Date();
         var extension = extensionHelper.createObject(taskConfig, {
           options: self.options()
         });
@@ -40,11 +40,17 @@ module.exports = function (grunt) {
         // Building
         extensionHelper.build(taskConfig, extension)
           .then(() => autoupdateHelper.buildXML(taskConfig, extension))
-          .finally(() => {
-            clearTimeout(timeout);
+          .then(() => {
+            counter++;
+            grunt.log.ok("Create file:" + (new Date() - startDateTime) + " milliseconds.");
+          })
+          .catch(e => {
+            grunt.log.error("Encounter an error:");
+            grunt.log.error(e);
+            grunt.log.warn('Please tell us the bugs: <https://github.com/volnet/grunt-crx/issues>');
+            
+            counter = fileLength;
             done();
-            grunt.log.writeln("Task end in : " + (new Date() - startDateTime) + " millseconds.");
-            grunt.log.writeln("Done.");
           })
       });
     }

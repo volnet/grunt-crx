@@ -37,7 +37,6 @@ This task is a [multi task](http://gruntjs.com/creating-tasks#multi-tasks), mean
 - `baseURL` (string): folder URL where package files will be self hosted ([see Autoupdating in Chrome Extension docs](https://developer.chrome.com/extensions/autoupdate));
 - `maxBuffer` (Number): amount of bytes available to package the extension ([see child_process#exec](https://nodejs.org/docs/latest/api/child_process.html#child_process_child_process_exec_command_options_callback));
 - `privateKey` (string): location of the `.pem` file used to sign your `crx` extension.
-- `timeoutMillonseconds` (Number): default value 10000ms (10seconds), it repair the problem [see `registerMultiTask` + `this.async` + `forget done()`](https://gruntjs.com/frequently-asked-questions#why-doesn-t-my-asynchronous-task-complete) , and [see the issue](Issues.md).
 
 ## Configuration Examples
 
@@ -99,8 +98,7 @@ grunt.initConfig({
   crx: {
     options: {
       privateKey: "dist/key.pem",
-      maxBuffer: 3000 * 1024, //build extension with a weight up to 3MB
-      timeoutMillonseconds: 300000 //It should be the longest time possible, but not too short (must be longer than the task execution time)."
+      maxBuffer: 3000 * 1024 //build extension with a weight up to 3MB
     },
     staging: {
       "src": [
@@ -115,13 +113,13 @@ grunt.initConfig({
     },
     production: {
       files: {
-        "dist/production/<%= pkg.name %>-<%= manifest.version %>-dev.crx": [
+        "dist/production/<%= pkg.name %>-<%= manifest.version %>-prod.crx": [
           "src/**/*",
           "!.{git,svn}",
           "!*.pem",
           "!dev/**"
         ],
-        "dist/production/<%= pkg.name %>-<%= manifest.version %>-dev.zip": [
+        "dist/production/<%= pkg.name %>-<%= manifest.version %>-prod.zip": [
           "src/**/*",
           "!.{git,svn}",
           "!*.pem",
@@ -145,7 +143,11 @@ Although `grunt-crx` will exclude by default because [we do not want this story]
 
 ## Upgrading
 
-## v1.0
+### v2.2.0
+
+- It repair the problem [see `registerMultiTask` + `this.async` + `forget done()`](https://gruntjs.com/frequently-asked-questions#why-doesn-t-my-asynchronous-task-complete) , and [see the issue](Issues.md).
+
+### v1.0
 
 A few things have changed since `v0.3`:
 

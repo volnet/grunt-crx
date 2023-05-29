@@ -10,7 +10,7 @@ My test here (only about without done() ): <https://github.com/volnet/grunt-test
 
 I check your code, you have write done in `.then(()=>done)` and `.catch(done)` in tasks/crx.js, but when I run my code with multi tasks, it is not stabled.
 
-I add the `timeoutMilliseconds` to fix the bug.
+I add the interval timer to fix the bug.
 
 ## Why not pull request
 
